@@ -1,0 +1,57 @@
+### 新增用户
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "username": "小王",
+  "phone": "13600001111"
+}
+
+### 修改用户
+PUT http://localhost:8080/user/1
+Content-Type: application/json
+
+{
+  "username": "张帅",
+  "phone": "18800008888"
+}
+
+### 4. 删除用户（测试存在）
+DELETE http://localhost:8080/user/1
+### 6. 分页查询（Day 4）
+GET http://localhost:8080/user/page?current=1&size=3
+
+### 1. 测试：用户名不传（应返回 400）
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "phone": "13800001111"
+}
+
+### 2. 测试：用户名太短（应返回 400）
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "username": "小",
+  "phone": "13800001111"
+}
+
+### 3. 测试：手机号格式错误（应返回 400）
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "username": "李四",
+  "phone": "123456"
+}
+
+### 4. 测试：全部正确（应返回 200）
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "username": "王五",
+  "phone": "18700008888"
+}

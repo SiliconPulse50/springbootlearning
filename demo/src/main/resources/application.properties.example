@@ -1,0 +1,28 @@
+# ===== 配置模板 =====
+# 使用方法：把本文件复制一份改名为 application.properties，并填上你自己的数据库信息。
+# （application.properties 已被 .gitignore 忽略，不会提交到仓库）
+
+server.port=8080
+
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+# 本地数据库示例（取消注释即可用）：
+#spring.datasource.url=jdbc:mysql://localhost:3306/demo_db?useSSL=false&serverTimezone=UTC
+spring.datasource.url=jdbc:mysql://YOUR_DB_HOST:3306/demo_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+spring.datasource.username=YOUR_DB_USERNAME
+spring.datasource.password=YOUR_DB_PASSWORD
+
+springdoc.api-docs.enabled=true
+knife4j.enable=true
+springdoc.packages-to-scan=com.example.demo
+# 说明：openapi2(springfox) 版 knife4j 不支持 knife4j.global.request-parameters 全局参数；
+# 接口的 Authorization 请求头已通过 @ApiImplicitParam 声明在 TestController 里，doc.html 调试区可直接填写
+
+logging.level.com.example.demo=DEBUG
+logging.level.org.springframework=INFO
+# 想看到 Controller 的映射日志（启动时的 "18 mappings" 和每次请求的 "Mapped to ..."）时，打开下面这行：
+# logging.level.org.springframework.web.servlet.mvc.method.annotation=DEBUG
+logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} - %msg%n
+
+logging.file.name=logs/application.log
+logging.logback.rollingpolicy.max-history=7
+mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl

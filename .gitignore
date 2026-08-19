@@ -1,0 +1,21 @@
+# ===== 构建产物 =====
+demo/target/
+target/
+
+# ===== 日志 =====
+logs/
+demo/logs/
+*.log
+
+# ===== IDE =====
+.idea/
+*.iml
+.vscode/
+
+# ===== 本地临时文件 =====
+.m2cache/
+mvn-workspace-settings.xml
+*.tmp
+
+# ===== 敏感配置（含数据库密码，切勿提交；参考 application.properties.example）=====
+demo/src/main/resources/application.properties
