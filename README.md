@@ -3,7 +3,7 @@
 JWT+拦截器的学习  
 # ✅ 目前已经熟悉的技术栈与能力清单
 
-## 1. 核心基础与架构（脱离了“新手村”）
+## 1. 核心基础与架构
 - **三层架构**：Controller（控制层） ↔ Service（业务层） ↔ Mapper（数据层），做到了职责分离。
 - **Maven 项目管理**：能自己添加依赖、解决 jar 包冲突（比如切换 Knife4j 版本、引入 JJWT）。
 - **Spring Boot 核心**：理解 `@RestController`、`@Autowired` 依赖注入、`application.properties` 配置，不再惧怕启动报错。
