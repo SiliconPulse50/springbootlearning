@@ -8,12 +8,12 @@ JWT+拦截器的学习
 - **Maven 项目管理**：能自己添加依赖、解决 jar 包冲突（比如切换 Knife4j 版本、引入 JJWT）。
 - **Spring Boot 核心**：理解 `@RestController`、`@Autowired` 依赖注入、`application.properties` 配置，不再惧怕启动报错。
 
-## 2. 数据库操作（从 SQL 手写党升级为 ORM 党）
+## 2. 数据库操作
 - **MyBatis-Plus**：熟练使用 `BaseMapper`，无需手写 SQL 即可完成增删改查。
 - **复杂查询**：能用 `QueryWrapper` 构造条件（等值查询 `.eq`、模糊查询 `.like`、条件判断）。
 - **分页能力**：配置了分页插件，能熟练返回 `Page` 对象给前端。
 
-## 3. 接口设计与规范（具备了“团队协作”意识）
+## 3. 接口设计与规范
 - **RESTful API**：区分 GET、POST、PUT、DELETE 语义。
 - **统一响应**：封装了 `Result<T>` 泛型类，所有接口返回固定格式的 JSON（`code`/`msg`/`data`）。
 - **参数接收**：熟练使用 `@PathVariable`（路径参数）、`@RequestParam`（查询参数）、`@RequestBody`（JSON 参数）。
