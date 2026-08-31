@@ -14,6 +14,11 @@ public class WebConfig implements WebMvcConfigurer {
                 // 拦截所有请求（/** 表示所有路径）
                 .addPathPatterns("/**")
                 // 放行登录接口和 Knife4j 文档（否则文档页面都访问不了）
-                .excludePathPatterns("/login", "/doc.html", "/webjars/**", "/v2/api-docs", "/swagger-resources/**");
+                .excludePathPatterns("/login", "/doc.html", "/webjars/**", "/v2/api-docs", "/swagger-resources/**","/migrate-password",
+                        "/**/*.html",            // 所有 HTML 页面
+                        "/**/*.js",              // 所有 JS 文件
+                        "/**/*.css"              // 所有 CSS 文件
+
+                );
     }
 }
