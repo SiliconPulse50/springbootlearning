@@ -82,7 +82,18 @@ public Result<List<User>> getUsers() {
 //        userService.addUser(user);
 //        return Result.success("添加成功");
 //    }
+/*
+* 为什么需要这个接口？不能直接在数据库里写 SQL 加密吗？
+因为 BCrypt 加密需要计算随机盐（Salt），这个算法是 Java 代码实现的，靠纯 SQL 语句（比如 UPDATE user SET password = MD5('123456')）做不出来。所以我们必须写一个一次性的 Java 接口，让它跑一遍代码，把全表数据都刷新一遍。
 
+⚠️ 重要提醒（安全须知）
+这是一个“一次性工具”，跑完就要立即禁用（注释掉 @GetMapping 或直接删掉方法）。否则：
+
+如果坏人发现了这个接口（比如他扫到了 /migrate-password），他可以反复调用，虽然不会把密码改回明文，但会浪费服务器性能（因为 BCrypt 加密很吃 CPU）。
+
+更严重的是，如果代码逻辑被篡改，可能会有风险。
+*
+* */
     @ApiOperation(value = "修改用户", notes = "根据ID修改用户名或手机号")
     @ApiImplicitParam(name = "Authorization", value = "登录接口返回的 token（不要带 Bearer 前缀）", required = false, dataType = "string", paramType = "header")
     @PutMapping("/user/{id}")

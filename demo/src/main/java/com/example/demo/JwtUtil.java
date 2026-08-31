@@ -4,18 +4,25 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
-
+@Component
 public class JwtUtil {
 
     // 1. 加密密钥（实际项目中放在配置文件里，这里固定是为了方便）
-    private static final String SECRET = "your-256-bit-secret-your-256-bit-secret"; // 至少32位
-    private static final Key key = Keys.hmacShaKeyFor(SECRET.getBytes());
+    private  static String secret;
+    private static  Key key;
 
     // 2. 令牌有效期（7天，单位毫秒）
     private static final long EXPIRE_TIME = 1000 * 60 * 60 * 24 * 7;
+@Value("${jwt.secret}")
+public void setSecret(String secret){
+    JwtUtil.secret=secret;
+    JwtUtil.key=Keys.hmacShaKeyFor(secret.getBytes());
+}
 
     // 3. 生成令牌（传入用户ID和用户名）
     public static String generateToken(Long userId, String username) {

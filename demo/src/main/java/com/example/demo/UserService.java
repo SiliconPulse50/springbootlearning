@@ -22,6 +22,11 @@ public class UserService {
         // 这里依然用 JdbcTemplate 去查，但它属于"数据访问"层面
         return jdbcTemplate.queryForList(sql);
     }*/
+    public User findByUsername(String username){
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.eq("username", username);
+        return userMapper.selectOne(wrapper);
+    }
     public User addUser(User user) {
         // 1. 校验用户名是否已存在（去重逻辑）
         QueryWrapper<User> wrapper = new QueryWrapper<>();
